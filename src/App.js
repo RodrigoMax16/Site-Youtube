@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { UserStorage } from './contexts/userContext';
+
+import Home from './pages/home';
+import Musica from './pages/musica';
+import Envios from './pages/envios';
+import Login from './pages/login';
+import Shorts from './pages/shorts';
+import Cadastro from './pages/cadastro';
+import Pesquisa from './pages/pesquisa';
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <UserStorage>
+          <div className="App">
+              <Routes>
+                <Route path='/' element={<Home />}/>
+                <Route path='/shorts' element={<Shorts />}/>
+                <Route path='/music' element={<Musica />}/>
+                <Route path='/envios' element={<Envios />}/>
+                <Route path='/sign-in' element={<Login />}/>
+                <Route path='/sign-up' element={<Cadastro />}/>
+                <Route path='/search' element={<Pesquisa />}/>
+              </Routes>
+
+          </div>
+      </UserStorage>
+    </BrowserRouter>
+    
   );
 }
 
